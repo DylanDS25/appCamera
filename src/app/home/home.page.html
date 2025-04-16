@@ -7,14 +7,40 @@
 </ion-header>
 
 <ion-content>
+
+  <!--
   <ion-button expand="full" (click)="takePicture()">
     <ion-icon slot="start" name="camera"></ion-icon>
     <ion-label>Tomar foto</ion-label>
   </ion-button>
-  <div *ngIf="photo">
+  -->
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="takePicture()">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngFor="let photo of photos">
+      <img [src]="photo.image" [alt]="photo.caption" style="width: auto; height: 20em;">
+    <ion-card-header>
+      <ion-card-subtitle>{{photo.date}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{photo.caption}}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <div *ngIf="photo">
     <img [src]="photo" alt="foto" style="width: 100%; height: auto;">
-  </div>
+  </div> -->
+
 </ion-content>
+
+
+
+
 <!--
 npm install @capacitor/camera
 npx cap sync
@@ -26,6 +52,4 @@ ionic build
 carpeta android -> cd android
 npx cap sync android
 ../gradlew assembleDebug
-
-45:25
 -->

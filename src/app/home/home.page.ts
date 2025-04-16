@@ -9,10 +9,13 @@ import { Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 })
 export class HomePage {
 
+  photos: { image:string, date:string, caption:string }[] = [];
   photo: string | undefined;
-  isValid = true;
+  // isValid = true;
 
   constructor() {}
+
+
 
   async takePicture() {
     const image = await Camera.getPhoto({
@@ -22,7 +25,13 @@ export class HomePage {
       source: CameraSource.Camera,
     });
     // console.log(image);
-    this.photo = image.dataUrl;
+    // this.photo = image.dataUrl;
+
+    this.photos.push({
+      image: image.dataUrl || '',
+      date: new Date().toLocaleDateString(),
+      caption: ''
+    })
   }
 
 }
