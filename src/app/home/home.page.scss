@@ -25,3 +25,10 @@
 #container a {
   text-decoration: none;
 }
+
+.centered-img {
+  display: block;
+  margin: 0 auto;
+  height: 20em;
+  object-fit: cover;
+}

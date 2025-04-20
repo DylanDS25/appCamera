@@ -17,17 +17,17 @@
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="takePicture()">
   <ion-fab-button>
-    <ion-icon name="add"></ion-icon>
+    <ion-icon name="camera-outline"></ion-icon>
   </ion-fab-button>
   </ion-fab>
 
   <ion-card *ngFor="let photo of photos">
-      <img [src]="photo.image" [alt]="photo.caption" style="width: auto; height: 20em;">
+    <img [src]="photo.image" [alt]="photo.caption" class="centered-img">
     <ion-card-header>
       <ion-card-subtitle>{{photo.date}}</ion-card-subtitle>
     </ion-card-header>
-
-    <ion-card-content>
+    
+    <ion-card-content (click)="updatePicture(photo)">
       {{photo.caption}}
     </ion-card-content>
   </ion-card>
@@ -49,6 +49,7 @@ npx cap sync
 <!--
 Compilar
 ionic build
+ionic capacitor add android
 carpeta android -> cd android
 npx cap sync android
 ../gradlew assembleDebug
